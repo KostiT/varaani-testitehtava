@@ -2,11 +2,11 @@ import React, { FC, useContext } from 'react';
 import { useHistory } from 'react-router';
 import { useUserForm } from '../../model/login';
 import { AuthService } from '../../service/auth';
-import { GlobalStateContext } from '../../state';
+import { AppContext } from '../../state';
 
 export const UserForm: FC = () => {
   const { register, handleSubmit } = useUserForm();
-  const { state } = useContext(GlobalStateContext);
+  const { state } = useContext(AppContext);
   const history = useHistory();
 
   const onSubmit = handleSubmit((data) => {

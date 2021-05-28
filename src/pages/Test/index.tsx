@@ -1,11 +1,18 @@
 import React, { FC, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { AuthService } from '../../service/auth';
-import { GlobalStateContext } from '../../state';
-import './index.css';
+import { AppContext } from '../../state';
+// import './index.css';
+import { NavBar } from '../../component/Navbar';
+import styled from "styled-components";
 
+const Main = styled.main`
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+` 
 export const Test: FC = () => {
-  const { state, dispatch } = useContext(GlobalStateContext);
+  const { state, dispatch } = useContext(AppContext);
   const history = useHistory();
 
   const onLogout = () =>
@@ -17,15 +24,18 @@ export const Test: FC = () => {
   })
 
   return (
-    <main className="login-page pt-5">
-        <h4>{'Username : ' + state.user.username}</h4>
-        <h4>{'Email : ' + state.user.email}</h4>
-        <h4>{'Age : ' + state.user.age}</h4>
-        <div>
-          <button type="button" className="btn btn-primary btn-lg" onClick={ onLogout }>
-            Logout
-          </button>
-        </div>
-    </main>
+    <>
+      <NavBar />
+      <Main className="login-page pt-5">
+          <h4>{'Username : ' + state.user.username}</h4>
+          <h4>{'Email : ' + state.user.email}</h4>
+          <h4>{'Age : ' + state.user.age}</h4>
+          <div>
+            <button type="button" className="btn btn-primary btn-lg" onClick={ onLogout }>
+              Logout
+            </button>
+          </div>
+      </Main>
+    </>
   );
 };

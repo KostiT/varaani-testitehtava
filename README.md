@@ -3,5 +3,4 @@
 Clone this repository and `yarn install` to start app in localhost.
 
 ## Logins
-username: `tester` 
-password `123456`;
+Login with username `tester` and password `123456`;
